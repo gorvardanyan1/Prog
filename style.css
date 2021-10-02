@@ -1,0 +1,65 @@
+#remove{
+    list-style-image: url(icon/remove.png);
+}
+#grass{
+    list-style-image: url(icon/grass.png);
+}
+#grassEater{
+    list-style-image: url(icon/grassEather.png);
+}
+#predator{
+    list-style-image: url(icon/predator.png);
+}
+#bird{
+    list-style-image: url(icon/bird.png);
+}
+#snake{
+    list-style-image: url(icon/snake.png);
+}
+#lion{
+    list-style-image: url(icon/lion.png);
+}
+#grassbtt{
+    background-color: #73FF00;
+    font-weight: bold;
+    height: 28px;
+    border-radius: 10%;
+    border : 1px solid #73FF00
+}
+#grassEaterbtt{
+    background-color: yellow;
+    font-weight: bold;
+    height: 28px;
+    border-radius: 10%;
+    border : 1px solid yellow
+}
+#predatorbtt{
+    background-color: red;
+    font-weight: bold;
+    height: 28px;
+    border-radius: 10%;
+    border : 1px solid red
+}
+#birdbtt{
+    background-color: #00D5FF;
+    font-weight: bold;
+    height: 28px;
+    border-radius: 10%;
+    border : 1px solid #00D5FF
+}
+#snakebtt{
+    background-color: #D900FF;
+    font-weight: bold;
+    height: 28px;
+    border-radius: 10%;
+    border : 1px solid #D900FF
+}
+#lionbtt{
+    background-color: #FFA200;
+    font-weight: bold;
+    height: 28px;
+    border-radius: 10%;
+    border : 1px solid #FFA200
+}
+
+

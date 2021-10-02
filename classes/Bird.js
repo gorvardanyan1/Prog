@@ -1,9 +1,11 @@
-class Bird extends LivingCreature {
+let LivingCreature = require('../LivingCreature')
+
+module.exports = class Bird extends LivingCreature {
     constructor(x, y, id) {
-       super(x,y,id)
+        super(x, y, id)
         this.energy = 12;
         this.multiplay = 0
-        this.getNewCoordinates();
+
     }
     getNewCoordinates() {
         this.directions = [
@@ -41,36 +43,43 @@ class Bird extends LivingCreature {
             [this.x + 4, this.y + 4]
         ];
     }
-    chooselCell(character) {
-        this.getNewCoordinates();
-       return super.chooselCell(character)
-    }
+
 
     mul() {
-        var emptyCells = this.chooselCell(0);
-        var newCell = random(emptyCells)
+        var emptyCells = super.chooseCell(0);
+        var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
         this.multiplay++
         if (newCell && this.multiplay > 2 && this.energy > 10) {
             var newX = newCell[0];
             var newY = newCell[1]
 
-            var newBird = new Bird(newX, newY, this.id)
+            matrix[newY][newX] = 4
+            var newBird = new Bird(newX, newY, 4)
             birdArr.push(newBird)
-            matrix[newY][newX] = this.id;
+
             this.multiplay = 0
             this.energy = 12
         }
+        if(weath == "winter"){
+            this.energy -= 5;
+            this.multiply -= 5
+        }
+        if(weath == "summer"){
+            this.energy += 4;
+            this.multiply += 4
+        }
     }
     move() {
-        var emptyCells = this.chooselCell(0);
-        var newCell = random(emptyCells)
+        var emptyCells = super.chooseCell(0);
+        var newCell =emptyCells[Math.floor(Math.random() * emptyCells.length)]
+        /// energ , multi
         this.energy--
         this.multiplay++
         if (newCell && this.multiplay > 2 && this.energy > 0) {
             var newX = newCell[0]
             var newY = newCell[1]
 
-            matrix[newY][newX] = this.id
+            matrix[newY][newX] =  matrix[this.y][this.x]
             matrix[this.y][this.x] = 0
             this.x = newX
             this.y = newY
@@ -80,14 +89,14 @@ class Bird extends LivingCreature {
         this.die();
     }
     eat() {
-        var emptyCells = this.chooselCell(4);
-        var newCell = random(emptyCells)
+        var snakeCells = super.chooseCell(5);
+        var newCell = snakeCells[Math.floor(Math.random() * snakeCells.length)]
         this.multiplay++
         if (newCell && this.multiplay > 2 && this.energy > 0) {
             var newX = newCell[0]
             var newY = newCell[1]
 
-            matrix[newY][newX] = this.id
+            matrix[newY][newX] = matrix[this.y][this.x]
             matrix[this.y][this.x] = 0
             this.x = newX
             this.y = newY

@@ -1,51 +1,45 @@
-class Predator extends LivingCreature {
+let LivingCreature = require('../LivingCreature')
+
+module.exports =  class Predator extends LivingCreature {
     constructor(x, y, id) {
       super(x,y,id)
         this.energy = 5
-        this.getNewCoordinates()
         this.multiply = 4
     }
-    getNewCoordinates() {
-        this.directions = [
-            [this.x - 1, this.y - 1],
-            [this.x, this.y - 1],
-            [this.x + 1, this.y - 1],
-            [this.x - 1, this.y],
-            [this.x + 1, this.y],
-            [this.x - 1, this.y + 1],
-            [this.x, this.y + 1],
-            [this.x + 1, this.y + 1]
-        ];
-    }
-    chooselCell(character) {
-        this.getNewCoordinates();
-       return super.chooselCell(character)
-    }
-
+    
     mul() {
-        var emptyCells = this.chooselCell(0);
-        var newCell = random(emptyCells)
+        var emptyCells = super.chooseCell(0);
+        var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
 
         if (this.energy > 12 && newCell) {
             var newX = newCell[0];
             var newY = newCell[1]
 
-            var newPredator = new Predator(newX, newY, this.id)
+            matrix[newY][newX] = 3
+            var newPredator = new Predator(newX, newY, 3)
             predatorArr.push(newPredator)
 
-            matrix[newY][newX] = this.id;
+           this.energy = 6
+        }
+        if(weath == "winter"){
+            this.energy -= 2;
+            this.multiply -= 2
+        }
+        if(weath == "summer"){
+            this.energy += 1;
+            this.multiply += 1
         }
     }
 
     move() {
-        var emptyCells = this.chooselCell(0);
-        var newCell = random(emptyCells)
+        var emptyCells = super.chooseCell(0);
+        var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
 
         if (this.energy > 0 && newCell) {
             var newX = newCell[0]
             var newY = newCell[1]
 
-            matrix[newY][newX] = this.id
+            matrix[newY][newX] = matrix[this.y][this.x]
             matrix[this.y][this.x] = 0
             this.x = newX
             this.y = newY
@@ -59,18 +53,19 @@ class Predator extends LivingCreature {
     }
 
     eat() {
-        var emptyCells = this.chooselCell(2);
-        var emptyCellsBird = this.chooselCell(5)
-        for (var i in emptyCellsBird) {
-            emptyCells.push(emptyCellsBird[i])
-        }
-        var newCell = random(emptyCells)
+        var grassEaterCells = super.chooseCell(2);
+        // var emptyCellsBird = this.chooselCell(5)
+        // for (var i in emptyCellsBird) {
+        //     emptyCells.push(emptyCellsBird[i])
+        // }
+        var newCell = grassEaterCells[Math.floor(Math.random() * grassEaterCells.length)]
 
         if (this.energy > 0 && newCell) {
+          
             var newX = newCell[0]
             var newY = newCell[1]
 
-            matrix[newY][newX] = this.id
+            matrix[newY][newX] = matrix[this.y][this.x]
             matrix[this.y][this.x] = 0
             this.x = newX
             this.y = newY
@@ -80,14 +75,15 @@ class Predator extends LivingCreature {
                     grassEaterArr.splice(i, 1)
                 }
             }
-            for (var i in birdArr) {
+           /*  for (var i in birdArr) {
                 if (birdArr[i].x == newX && birdArr[i].y == newY) {
                     birdArr.splice(i, 1)
                     break;
                 }
-            }
+            } */
             this.energy++;
             this.mul();
+            ////
         } else {
             this.move();
         }
