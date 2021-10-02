@@ -36,7 +36,7 @@ function nkarel(matrix) {
             else if (obj == 5) {
                 fill("#D900FF")
             }
-            else if(obj == 6){
+            else if (obj == 6) {
                 fill("#FFA200")
             }
             else if (obj == 0) {
@@ -69,6 +69,20 @@ function addBird() {
 function addSnake() {
     socket.emit("add snake")
 }
-function addLion(){
+function addLion() {
     socket.emit("add lion")
+}
+
+
+function winterFunc(){
+  weath = "winter"
+}
+function summerFunc(){
+    weath = "summer"
+}
+function springFunc(){
+    weath ="spring"
+}
+function autumnFunc(){
+    weath = "autumn"
 }

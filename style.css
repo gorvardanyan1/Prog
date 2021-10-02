@@ -63,3 +63,11 @@
 }
 
 
+#weather{
+   margin-left: 40px;
+}
+
+.weatherBtt{
+    display:block;
+    margin-top: 5px;
+}
