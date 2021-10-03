@@ -74,15 +74,19 @@ function addLion() {
 }
 
 
-function winterFunc(){
-  weath = "winter"
+function winterFunc() {
+    weath = "winter"
 }
-function summerFunc(){
+function summerFunc() {
     weath = "summer"
 }
-function springFunc(){
-    weath ="spring"
+function springFunc() {
+    weath = "spring"
 }
-function autumnFunc(){
+function autumnFunc() {
     weath = "autumn"
+}
+
+function lightning() {
+    socket.emit("createLightning")
 }

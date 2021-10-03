@@ -90,13 +90,13 @@ function game() {
     for (var i in predatorArr) {
         predatorArr[i].eat()
     }
-    for(var i in birdArr){
+    for (var i in birdArr) {
         birdArr[i].eat()
     }
-    for(var i in snakeArr){
-        snakeArr[i].eat() 
+    for (var i in snakeArr) {
+        snakeArr[i].eat()
     }
-    for(var i in lionArr){
+    for (var i in lionArr) {
         lionArr[i].eat()
     }
     io.sockets.emit("send matrix", matrix);
@@ -192,7 +192,12 @@ function addLion() {
     io.sockets.emit("send matrix", matrix);
 }
 ///new
-
+function lightning() {
+    let randomNum1 = Math.floor(Math.random() * matrix.length)
+    let randomNum2 = Math.floor(Math.random() * matrix.length)
+    
+   
+}
 
 
 function weather() {
@@ -210,7 +215,8 @@ function weather() {
     }
     io.sockets.emit('weather', weath)
 }
-setInterval(weather, 5000);
+setInterval(weather, 7000);
+
 
 
 ////
@@ -224,6 +230,7 @@ io.on('connection', function (socket) {
     socket.on("add bird", addBird)
     socket.on("add snake", addSnake)
     socket.on("add lion", addLion)
+    socket.on("createLightning", lightning)
 });
 
 
