@@ -39,6 +39,12 @@ function nkarel(matrix) {
             else if (obj == 6) {
                 fill("#FFA200")
             }
+            else if (obj == 7) {
+                fill("#00EEFF")
+            }
+            else if (obj == 8) {
+                fill("#000A27")
+            }
             else if (obj == 0) {
                 fill("grey")
             }
@@ -89,4 +95,7 @@ function autumnFunc() {
 
 function lightning() {
     socket.emit("createLightning")
+}
+function bomb(){
+    socket.emit("createBomb")
 }

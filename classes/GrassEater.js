@@ -13,7 +13,7 @@ module.exports = class GrassEater extends LivingCreature {
     mul() {
         var emptyCells = super.chooseCell(0);
         var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
-        /// enregy???
+       
         if (newCell) {
             var newX = newCell[0];
             var newY = newCell[1]
@@ -47,7 +47,7 @@ module.exports = class GrassEater extends LivingCreature {
 
             this.energy--
         }
-        // die
+      
         this.die();
     }
     eat() {

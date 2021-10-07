@@ -72,7 +72,7 @@ module.exports = class Bird extends LivingCreature {
     move() {
         var emptyCells = super.chooseCell(0);
         var newCell =emptyCells[Math.floor(Math.random() * emptyCells.length)]
-        /// energ , multi
+        
         this.energy--
         this.multiplay++
         if (newCell && this.multiplay > 2 && this.energy > 0) {

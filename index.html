@@ -18,8 +18,8 @@
     <div class="tools">
 
         <ul>
-            <li id="remove">
-                <button onclick="kill()">Kill them all</button>
+            <li id="kill">
+                <button onclick="kill()" id="killBtt">Kill them all</button>
             </li>
             <li id="grass">
                 <button onclick="addGrass()" id="grassbtt">Add grass</button>
@@ -43,15 +43,16 @@
         <div id="weather">
             <h1>Weather</h1>
             <button class="weatherBtt" onclick="winterFunc()">Winter</button>
-            
+
             <button class="weatherBtt" onclick="springFunc()">Spring</button>
-           
+
             <button class="weatherBtt" onclick="summerFunc()">Summer</button>
-            
+
             <button class="weatherBtt" onclick="autumnFunc()">Autumn</button>
         </div>
         <div>
-            <button onclick="lightning()">lightning</button>
+            <button id="lightning" onclick="lightning()">lightning</button>
+            <button id="bomb" onclick="bomb()">Bomb</button>
         </div>
     </div>
 

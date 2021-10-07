@@ -1,4 +1,4 @@
-#remove{
+#kill{
     list-style-image: url(icon/remove.png);
 }
 #grass{
@@ -19,6 +19,14 @@
 #lion{
     list-style-image: url(icon/lion.png);
 }
+#killBtt{
+    background-color: #FF0044;
+    font-weight: bold;
+    height: 28px;
+    border-radius: 10%;
+    border : 1px solid #FF0044
+}
+
 #grassbtt{
     background-color: #73FF00;
     font-weight: bold;
@@ -70,4 +78,25 @@
 .weatherBtt{
     display:block;
     margin-top: 5px;
+}
+.weatherBtt{
+    background-color: #00D5FF;
+    font-weight: bold;
+    height: 28px;
+    border-radius: 10%;
+    border : 1px solid #00D5FF
+}
+#lightning{
+    background-color: #00D5FF;
+    font-weight: bold;
+    height: 28px;
+    border-radius: 10%;
+    border : 1px solid #00D5FF
+}
+#bomb{
+    background-color: #00D5FF;
+    font-weight: bold;
+    height: 28px;
+    border-radius: 10%;
+    border : 1px solid #00D5FF
 }

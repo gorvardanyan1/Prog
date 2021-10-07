@@ -191,14 +191,104 @@ function addLion() {
     }
     io.sockets.emit("send matrix", matrix);
 }
-///new
+
+function eatFunc(newX,newY){
+    for (let j in grassArr) {
+        if (grassArr[j].x == newX && grassArr[j].y == newY) {
+            grassArr.splice(j, 1)
+        }
+    }
+    for (let j in grassEaterArr) {
+        if (grassEaterArr[j].x == newX && grassEaterArr[j].y == newY) {
+            grassEaterArr.splice(j, 1)
+        }
+    }
+    for (let j in predatorArr) {
+        if (predatorArr[j].x == newX && predatorArr[j].y == newY) {
+            predatorArr.splice(j, 1)
+        }
+    }
+    for (let j in birdArr) {
+        if (birdArr[j].x == newX && birdArr[j].y == newY) {
+            birdArr.splice(j, 1)
+        }
+    }
+    for (var j in snakeArr) {
+        if (snakeArr[j].x == newX && snakeArr[j].y == newX) {
+            snakeArr.splice(j, 1)
+        }
+    }
+}
 function lightning() {
-    let randomNum1 = Math.floor(Math.random() * matrix.length)
-    let randomNum2 = Math.floor(Math.random() * matrix.length)
-    
-   
+
+    let y = Math.floor(Math.random() * matrix.length - 1)
+    let x = Math.floor(Math.random() * matrix[0].length - 1)
+
+
+
+    if (y > 0 && x > 0) {
+
+        for (let i in matrix) {
+
+            if (y > matrix.length - 1 || x > matrix[0].length - 1) {
+                break
+            }
+            matrix[y][x] = 7
+            eatFunc(x,y)
+           
+            y += 1
+            x += 1
+
+        }
+    }
+    io.sockets.emit("send matrix", matrix)
+    setTimeout(function () {
+        for (let y in matrix) {
+            for (let x in matrix[y]) {
+                if (matrix[y][x] == 7) {
+                    matrix[y][x] = 0
+
+
+                }
+            }
+        }
+        io.sockets.emit("send matrix", matrix)
+    }, 2000)
 }
 
+function bomb() {
+    
+        let randomCordinat = Math.floor(Math.random() * matrix.length - 1)
+    
+        if (randomCordinat > 0) {
+            matrix[randomCordinat][randomCordinat] = 8
+    
+            setTimeout(function () {
+                for (let i in matrix[0]) {
+                    matrix[randomCordinat][i] = 8
+                    eatFunc(i, randomCordinat)
+                }
+                for (let i in matrix) {
+                    matrix[i][randomCordinat] = 8
+                    eatFunc(randomCordinat, i)
+                }
+            }, 1000)
+            io.sockets.emit("send matrix", matrix)
+            setTimeout(function () {
+                for (let y in matrix) {
+                    for (let x in matrix[y]) {
+                        if (matrix[y][x] == 8) {
+                            matrix[y][x] = 0
+    
+    
+                        }
+                    }
+                }
+                io.sockets.emit("send matrix", matrix)
+            }, 2000)
+        }
+    
+}
 
 function weather() {
     if (weath == "winter") {
@@ -219,7 +309,7 @@ setInterval(weather, 7000);
 
 
 
-////
+
 
 io.on('connection', function (socket) {
     createObject();
@@ -231,6 +321,7 @@ io.on('connection', function (socket) {
     socket.on("add snake", addSnake)
     socket.on("add lion", addLion)
     socket.on("createLightning", lightning)
+    socket.on("createBomb", bomb)
 });
 
 

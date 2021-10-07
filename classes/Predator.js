@@ -54,10 +54,7 @@ module.exports =  class Predator extends LivingCreature {
 
     eat() {
         var grassEaterCells = super.chooseCell(2);
-        // var emptyCellsBird = this.chooselCell(5)
-        // for (var i in emptyCellsBird) {
-        //     emptyCells.push(emptyCellsBird[i])
-        // }
+       
         var newCell = grassEaterCells[Math.floor(Math.random() * grassEaterCells.length)]
 
         if (this.energy > 0 && newCell) {
@@ -75,15 +72,10 @@ module.exports =  class Predator extends LivingCreature {
                     grassEaterArr.splice(i, 1)
                 }
             }
-           /*  for (var i in birdArr) {
-                if (birdArr[i].x == newX && birdArr[i].y == newY) {
-                    birdArr.splice(i, 1)
-                    break;
-                }
-            } */
+           
             this.energy++;
             this.mul();
-            ////
+           
         } else {
             this.move();
         }

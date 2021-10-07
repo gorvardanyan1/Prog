@@ -1,6 +1,6 @@
 let LivingCreature = require('../LivingCreature')
 
-module.exports = class Predator extends LivingCreature {
+module.exports = class Lion extends LivingCreature {
     constructor(x, y, id) {
         super(x, y, id)
         this.energy = 5
@@ -19,6 +19,14 @@ module.exports = class Predator extends LivingCreature {
             lionArr.push(newLion)
 
             this.energy = 6
+            if (weath == "winter") {
+                this.energy -= 5;
+                this.multiply -= 5;
+            }
+            if (weath == "summer") {
+                this.energy += 1;
+                this.multiply += 1;
+            }
         }
     }
     move() {
